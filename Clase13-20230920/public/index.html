@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .error{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>hola</h1>
+    <div id="response"></div>
+    <form id="formulario">
+        <label>Nombre de usuario: </label>
+        <br>
+        <input placeholder="ingrese un mensaje" name="username"/>
+        <br>
+        <label>Contraseña:</label>
+        <br>
+        <input placeholder="pepe123" name="password"/>
+        <span class="error"></span>
+        <button type="submit">Enviar</button>
+    </form>
+
+    <script>
+        const direccion = 'http://localhost:8080/'
+        const formularioHTML = document.getElementById('formulario')
+        formularioHTML.addEventListener('submit', async (e)=>{
+            e.preventDefault()
+            const data = {username: formularioHTML.username.value, password: formularioHTML.password.value}
+            const respuesta = await fetch(direccion, {
+                method: 'POST', 
+                body: new URLSearchParams(data).toString(), 
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            }).then(res => res.json())
+            console.log(respuesta)
+            if(respuesta.ok){
+                window.location.href = './home.html'
+            }else{
+                const errorHTML = document.querySelector('.error')
+                errorHTML.innerText = respuesta.mensaje
+
+            }
+        })
+
+        const responseHTML = document.getElementById('response')
+        const callApi = async () =>{
+            let response = await fetch('http://localhost:8080/', {method: 'GET'}).then(res => res.json())
+            console.log(response)
+            responseHTML.innerHTML = response.mensaje
+        }
+        callApi()
+    </script>
+</body>
+</html>

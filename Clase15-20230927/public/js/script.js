@@ -1,0 +1,1 @@
+console.log(`Hola, no entiendo una goma`)
