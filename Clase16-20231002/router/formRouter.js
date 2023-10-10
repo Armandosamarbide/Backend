@@ -15,8 +15,8 @@ formRouter.post('/', async (req, res) =>{
         host: 'smtp.ethereal.email',
         port: 587,
         auth: {
-            user: 'jimmie.beatty57@ethereal.email',
-            pass: '9rUZZyHYJbnUv9tkUY'
+            user: 'harvey.heathcote@ethereal.email',
+            pass: 'uuSH9VF19u24Ghw7PB'
         }
     });
 

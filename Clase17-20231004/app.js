@@ -1,6 +1,6 @@
 const express = require('express')
 const hbs = require('hbs')
-const formRouter = require('./router/formRouter')
+const formRouter = require('./routers/formRouter')
 
 const app = express()
 
