@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Nuevo post</title>
+</head>
+<body>
+    
+    <h1>Nuevo post</h1>
+    <form action="/posts/new" method="POST">
+        <div>
+            <label for="title" >Titulo:</label>
+            <input 
+                id="title" 
+                required 
+                maxlength="30" 
+                minlength="5" 
+                name="title" 
+                placeholder="Escribí el titulo"
+            />
+        </div>
+        <div>
+            <label for='content'>Contenido</label>
+            <textarea 
+                placeholder="Escribí el contenido" 
+                maxlength="255" 
+                minlength="10" 
+                name="content" 
+                id="content" 
+                required 
+            ></textarea>
+        </div>
+        <button type="submit">Postear</button>
+    </form>
+
+    {{#if error}}
+        <span style="color: red;">
+            {{error}}
+        </span>
+    {{/if}}
+
+     {{!-- <button type="button">Volver</button> --}}
+
+     <form>
+ <input type="button" onclick="location.href='http://localhost:8080/posts';" value="Volver" />
+
+</form>
+
+</body>
+</html>

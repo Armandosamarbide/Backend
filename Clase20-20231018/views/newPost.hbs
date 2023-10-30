@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Cargar nuevo post</h1>
+    <form action="/posts/new" method="POST">
+    <div>
+        <label for='title'>Título: </label>
+        <input 
+        placeholder="Escribí el título de tu post" 
+        id="title" 
+        name="title"
+        minlength="5" 
+        maxlength="30"/>
+    </div>
+     <div>
+        <label for='content'>Contenido: </label>
+        <textarea 
+        placeholder="Escribí el contenido de tu post" 
+        minlength="10" 
+        maxlength="255" 
+        name="content"
+        id="content"
+        required
+        ></textarea>
+    </div>
+    <button type="submit">Enviar</button>
+    </form>
+    {{#if error}}
+    <span style="color: red">Tu no has creado nada</span>
+    {{/if}}
+</body>
+</html>
