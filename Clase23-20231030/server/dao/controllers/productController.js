@@ -1,8 +1,7 @@
 const Product = require("../models/productModel")
 
 
-/* Crear un producto */
-
+/* Funcion para controlar la creacion de un producto */
 const createProduct  = async (product) =>{
     const newProduct = new Product(product)
     try{
@@ -10,6 +9,11 @@ const createProduct  = async (product) =>{
     }catch(err){
         console.error(err)
     }
+}
+
+
+const getProductById = async (pid) =>{
+    return await Product.findById(pid)
 }
 
 const getProducts = async () => {
@@ -27,9 +31,12 @@ const deleteProduct = async (pid) =>{
         }
     }
     catch(err){
-        return {error: 'id no válido'}
+        return {error: 'id no valido'}
     }
    
 }
 
-module.exports = {createProduct, getProducts, deleteProduct}
+
+/* Desarrolla la ruta para crear productos */
+
+module.exports = {createProduct, getProducts, deleteProduct, getProductById}

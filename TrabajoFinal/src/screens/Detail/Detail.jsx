@@ -37,7 +37,7 @@ const Detail = () => {
     console.log(discDetail)
 
     const handleConfirmNewStock = () =>{
-        fetch('http://localhost:4000/api/product/' + did + '?stock=' + stockValue, {method: 'PUT'})
+        fetch('http://localhost:4000/api/discos/' + did + '?stock=' + stockValue, {method: 'PUT'})
         .then((res) => res.json())
         .then(result => {
             if(result.ok){
