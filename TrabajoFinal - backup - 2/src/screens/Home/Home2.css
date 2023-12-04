@@ -1,0 +1,21 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+.card {
+    width: 270px;
+    height: 330px;
+    margin: 5px 0;
+}
+
+.card:hover{
+    transform: scale(1.1);
+    transition: all linear 200ms;
+    z-index: 1;
+    box-shadow: 1px 1px 10px rgba(0,0,0,.3);
+    cursor: pointer;
+  }
+

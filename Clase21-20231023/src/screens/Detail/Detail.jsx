@@ -8,6 +8,7 @@ const Detail = () => {
     const [productDetail, setProductDetail] = useState(null)
     const [isEditModeActive, setIsEditModeActive] = useState(false)
     const [stockValue, setStockValue] = useState()
+    
     useEffect(
         () =>{
             fetch('http://localhost:4000/api/product/' + pid)

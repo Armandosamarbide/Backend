@@ -7,21 +7,44 @@ function App() {
 
 const [movieName, setMovieName] = useState('')
 const [review, setReview] = useState('')
-/* const [movieReviewList, setMovieList] = useState('') */
+const [movieReviewList, setMovieList] = useState([])
+const [newReview, setNewReview] = useState('')
 
-/* useEffect(() =>{
+
+useEffect(() =>{
 Axios.get('http://localhost:5174/api/get').then ((response) => {
 setMovieList(response.data)
 })
-}, []) */
+}, [])
+
+/* Creación de un nuevo elemento */
 
 const submitReview = () => {
 Axios.post('http://localhost:5174/api/insert', {
   movieName: movieName, 
   movieReview: review,
-}).then(()=> {
-  alert('Nuevo contenido añadido con éxito')
 })
+
+/* Ver todos los elementos de la tabla */
+
+setMovieList([...movieReviewList, 
+  {movieName: movieName, movieReview: review}])
+}
+
+/* Eliminación de un elemento */
+
+const deleteReview = (movie) => {
+Axios.delete(`http://localhost:5174/api/delete/${movie}`)
+}
+
+/* Actualización de un elemento */
+
+const updateReview = (movie) => {
+  Axios.put(`http://localhost:5174/api/update/`, {
+  movieName: movie,
+  movieReview: newReview,
+  })
+  setNewReview("")
 }
 
   return (
@@ -42,14 +65,24 @@ Axios.post('http://localhost:5174/api/insert', {
 
       <button onClick={submitReview}>Submit</button>
       
-     {/*  <div>
+     {<div className='lista'>
       {movieReviewList.map((value) => {
-      return <h2>Movie: {value.movieName} | Review: {value.movieReview}</h2>
-
+      return <div className='card'>
+              <h2>{value.movieName}</h2>
+              <p>{value.movieReview}</p>
+              
+              <button onClick={() => {deleteReview(value.movieName)}}>Delete</button>
+              
+              <input type="text" id="updateInput" onChange={(e)=> {
+                setNewReview(e.target.value)
+              }} />
+              <button onClick={()=> {updateReview(value.movieName)}}>Update</button>
+             
+             </div>
             }
       )}
       
-      </div> */}
+      </div>}
       
       </div>
       
